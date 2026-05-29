@@ -59,27 +59,15 @@
   <h2>Результат</h2>
 
   <div class="project-gallery">
+  <img src="../images/tg_parc.png" alt="Работа Telegram-парсера">
+  <img src="../images/tg_chats.png" alt="Список Telegram-чатов">
+  <img src="../images/tg_members.png" alt="CSV с участниками">
+</div>
 
-  <a href="../images/tg_parc.png" target="_blank">
-    <img
-      src="../images/tg_parc.png"
-      alt="Работа Telegram-парсера"
-    >
-  </a>
-
-  <a href="../images/tg_chats.png" target="_blank">
-    <img
-      src="../images/tg_chats.png"
-      alt="Список Telegram-чатов"
-    >
-  </a>
-
-  <a href="../images/tg_members.png" target="_blank">
-    <img
-      src="../images/tg_members.png"
-      alt="CSV с участниками"
-    >
-  </a>
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close">&times;</span>
+  <img class="lightbox-img" id="lightbox-img" src="" alt="">
+</div>
 
   </div>
 
@@ -95,6 +83,35 @@
 <footer class="footer">
   © 2026 Lafillek.dev
 </footer>
+<script>
+  const galleryImages = document.querySelectorAll('.project-gallery img');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const closeBtn = document.querySelector('.lightbox-close');
 
+  galleryImages.forEach((img) => {
+    img.addEventListener('click', () => {
+      lightbox.classList.add('active');
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+    });
+  });
+
+  closeBtn.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+  });
+
+  lightbox.addEventListener('click', (event) => {
+    if (event.target === lightbox) {
+      lightbox.classList.remove('active');
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      lightbox.classList.remove('active');
+    }
+  });
+</script>
 </body>
 </html>
