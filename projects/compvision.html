@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web-приложение для обработки изображений</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+<header class="header">
+  <a href="../index.html" class="logo">Lafillek.dev</a>
+
+  <nav class="nav">
+    <a href="../index.html">Главная</a>
+    <a href="../projects.html">Проекты</a>
+    <a href="../about.html">Обо мне</a>
+    <a href="../contacts.html">Контакты</a>
+  </nav>
+</header>
+
+<main class="project-page">
+  <h1>Web-приложение для обработки изображений</h1>
+
+  <p>
+    Web-система для загрузки, хранения и распределённой обработки изображений.
+    Проект использует базу данных и агентную архитектуру, где несколько обработчиков
+    параллельно подготавливают изображения для дальнейшего обучения модели.
+  </p>
+
+  <h2>Задача</h2>
+
+  <p>
+    Нужно было создать систему, которая принимает изображения,
+    сохраняет их в базе, распределяет задачи между агентами
+    и формирует подготовленный датасет для последующего обучения ML-модели.
+  </p>
+
+  <h2>Что реализовано</h2>
+
+  <ul>
+    <li>Web-интерфейс для загрузки изображений</li>
+    <li>Хранение данных и статусов обработки в базе данных</li>
+    <li>Распределение задач между агентами</li>
+    <li>Параллельная обработка изображений</li>
+    <li>Подготовка данных для обучения модели</li>
+  </ul>
+
+  <h2>Стек</h2>
+
+  <div class="tags">
+    <span class="tag">Python</span>
+    <span class="tag">FastAPI</span>
+    <span class="tag">PostgreSQL</span>
+    <span class="tag">Docker</span>
+    <span class="tag">OpenCV</span>
+    <span class="tag">ML Pipeline</span>
+  </div>
+
+  <h2>Результат</h2>
+
+  <div class="project-gallery">
+    <img src="../images/image-app-1.png" alt="Главный экран web-приложения">
+    <img src="../images/image-app-2.png" alt="Обработка изображений агентами">
+    <img src="../images/image-app-3.png" alt="Подготовленный датасет">
+  </div>
+
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="">
+  </div>
+
+  <p>
+    Получилась система, которая автоматизирует подготовку изображений:
+    принимает данные, распределяет обработку между агентами,
+    сохраняет результаты и формирует основу для дальнейшего обучения модели.
+  </p>
+
+  <a href="../projects.html" class="btn">Назад к проектам</a>
+</main>
+
+<footer class="footer">
+  © 2026 Lafillek.dev
+</footer>
+
+<script>
+  const galleryImages = document.querySelectorAll('.project-gallery img');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const closeBtn = document.querySelector('.lightbox-close');
+
+  galleryImages.forEach((img) => {
+    img.addEventListener('click', () => {
+      lightbox.classList.add('active');
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+    });
+  });
+
+  closeBtn.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+  });
+
+  lightbox.addEventListener('click', (event) => {
+    if (event.target === lightbox) {
+      lightbox.classList.remove('active');
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      lightbox.classList.remove('active');
+    }
+  });
+</script>
+
+</body>
+</html>

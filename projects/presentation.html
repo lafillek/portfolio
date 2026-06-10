@@ -1,0 +1,114 @@
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Разработка презентаций</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+<header class="header">
+  <a href="../index.html" class="logo">Lafillek.dev</a>
+
+  <nav class="nav">
+    <a href="../index.html">Главная</a>
+    <a href="../projects.html">Проекты</a>
+    <a href="../about.html">Обо мне</a>
+    <a href="../contacts.html">Контакты</a>
+  </nav>
+</header>
+
+<main class="project-page">
+  <h1>Презентации под Ваши цели</h1>
+
+  <p>
+    Создание презентаций для учебных проектов, бизнеса и публичных выступлений.
+    Особое внимание уделяется структуре материала, визуальному оформлению
+    и удобству восприятия информации.
+  </p>
+
+  <h2>Задача</h2>
+
+  <p>
+    На данной странице представлено несколько примеров моих проектов, оформленных в виде
+    карточки с яркими примерами. Можете ознакомится с ними ниже. 
+  </p>
+
+  <h2>Что реализовано</h2>
+
+  <ul>
+    <li>Разработка структуры презентации</li>
+    <li>Подбор визуального стиля</li>
+    <li>Создание слайдов и инфографики</li>
+    <li>Оформление титульных и контентных страниц</li>
+    <li>Подготовка материалов для выступления</li>
+  </ul>
+
+  <h2>Стек</h2>
+
+  <div class="tags">
+    <span class="tag">PowerPoint</span>
+    <span class="tag">Canva</span>
+    <span class="tag">Figma</span>
+    <span class="tag">LibreOffice</span>
+  </div>
+
+  <h2>Результат</h2>
+
+  <div class="single-project-image">
+    <img src="../images/presentation-preview.png"
+         alt="Пример презентации">
+  </div>
+
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="">
+  </div>
+
+  <p>
+    Получилась презентация с единым визуальным стилем,
+    понятной структурой и качественным оформлением,
+    готовая к использованию на защите проекта или публичном выступлении.
+  </p>
+
+  <a href="../projects.html" class="btn">Назад к проектам</a>
+</main>
+
+<footer class="footer">
+  © 2026 Lafillek.dev
+</footer>
+
+<script>
+  const image = document.querySelector('.single-project-image img');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const closeBtn = document.querySelector('.lightbox-close');
+
+  image.addEventListener('click', () => {
+    lightbox.classList.add('active');
+    lightboxImg.src = image.src;
+    lightboxImg.alt = image.alt;
+  });
+
+  closeBtn.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+  });
+
+  lightbox.addEventListener('click', (event) => {
+    if (event.target === lightbox) {
+      lightbox.classList.remove('active');
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      lightbox.classList.remove('active');
+    }
+  });
+</script>
+
+</body>
+</html>
+```
